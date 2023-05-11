@@ -1,14 +1,22 @@
+import {useState} from "react"
+
 function NewPetForm({addPet, updateFormData}) {
+
+  const [formSubmitted, setFormSubmitted] = useState(false)
 
     return (
       <div className="new-pet-form">
         <h2>New Pet</h2>
-        <form onSubmit={addPet}>
-          <input onChange={updateFormData} type="text" name="name" placeholder="Pet name" required/>
-          <input onChange={updateFormData} type="text" name="image" placeholder="Image URL" required/>
-          <input onChange={updateFormData} type="text" name="animal_type" placeholder="Type of animal" required/>
-          <button type="submit">Add Pet</button>
-        </form>
+        {formSubmitted ? <h1>Thanks for adding a new pet for adoption!</h1> :
+          <form onSubmit={(event) => {
+            addPet(event)
+            setFormSubmitted(formSubmitted => !formSubmitted)
+          }}>
+            <input onChange={updateFormData} type="text" name="name" placeholder="Pet name" required/>
+            <input onChange={updateFormData} type="text" name="image" placeholder="Image URL" required/>
+            <input onChange={updateFormData} type="text" name="animal_type" placeholder="Type of animal" required/>
+            <button type="submit">Add Pet</button>
+          </form>}
       </div>
     );
   }

@@ -1,6 +1,10 @@
 import Header from "./Header"
-import PetPage from "./PetPage"
+import NewPetForm from "./NewPetForm"
+import Search from "./Search"
+import PetList from "./PetList"
+import NavBar from "./NavBar"
 import {useState, useEffect} from "react"
+import { Route, Switch } from "react-router-dom"
 
 function App() {
 
@@ -77,8 +81,21 @@ function App() {
 
   return (
     <div className="app">
+      <NavBar/>
       <Header />
-      <PetPage pets={filteredPets} setSearchText={setSearchText} adoptPet={adoptPet} addPet={addPet} updateFormData={updateFormData} increaseLikes={increaseLikes} />
+      <Switch>
+        <Route path="/add_pet">
+          <NewPetForm addPet={addPet} updateFormData={updateFormData} />
+        </Route>
+        <Route path="/search">
+          <Search setSearchText={setSearchText} searchText={searchText} />
+          <PetList pets={filteredPets} adoptPet={adoptPet} increaseLikes={increaseLikes} />
+        </Route>
+        <Route exact path="/">
+          <h1>Welcome! Here is the list of pets available for adoption:</h1>
+          <PetList pets={pets} adoptPet={adoptPet} increaseLikes={increaseLikes} />
+        </Route>
+      </Switch>
     </div>
   );
 }

@@ -1,13 +1,6 @@
 {
   "pets": [
     {
-      "id": 1,
-      "name": "Fido",
-      "image": "./images/dog.jpeg",
-      "likes": 9,
-      "animal_type": "Dog"
-    },
-    {
       "id": 2,
       "name": "Kitty",
       "image": "./images/cat.png",
@@ -48,6 +41,13 @@
       "image": "./images/fish.jpeg",
       "likes": 9,
       "animal_type": "Fish"
+    },
+    {
+      "likes": 7,
+      "name": "Snowball",
+      "image": "https://www.humanesociety.org/sites/default/files/2019/03/rabbit-475261_0.jpg",
+      "animal_type": "Rabbit",
+      "id": 8
     }
   ]
 }
