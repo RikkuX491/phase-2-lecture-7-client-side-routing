@@ -1,0 +1,53 @@
+{
+  "pets": [
+    {
+      "id": 1,
+      "name": "Fido",
+      "image": "./images/dog.jpeg",
+      "likes": 9,
+      "animal_type": "Dog"
+    },
+    {
+      "id": 2,
+      "name": "Kitty",
+      "image": "./images/cat.png",
+      "likes": 9,
+      "animal_type": "Cat"
+    },
+    {
+      "id": 3,
+      "name": "Hammy",
+      "image": "./images/hamster.jpeg",
+      "likes": 8,
+      "animal_type": "Hamster"
+    },
+    {
+      "id": 4,
+      "name": "Polly",
+      "image": "./images/parrot.jpeg",
+      "likes": 2,
+      "animal_type": "Bird"
+    },
+    {
+      "id": 5,
+      "name": "Angel",
+      "image": "./images/horse.jpeg",
+      "likes": 10,
+      "animal_type": "Horse"
+    },
+    {
+      "id": 6,
+      "name": "Fluffy",
+      "image": "./images/guinea-pig.jpeg",
+      "likes": 8,
+      "animal_type": "Guinea Pig"
+    },
+    {
+      "id": 7,
+      "name": "Goldie",
+      "image": "./images/fish.jpeg",
+      "likes": 9,
+      "animal_type": "Fish"
+    }
+  ]
+}
