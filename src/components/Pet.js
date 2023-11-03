@@ -8,19 +8,15 @@ function Pet({pet, adoptPet, increaseLikes}){
     function updateDisplayName(){
         setDisplayName(displayName => !displayName)
     }
+
+    function toggleFavorite(){
+        setFavorite(!favorite)
+    }
     
     return (
         <li className="pet">
             <img src={pet.image} alt={pet.name} />
-            {favorite ? (
-            <button onClick={() => {
-                setFavorite(!favorite)
-            }} className="favorite-button active">★</button>
-            ) : (
-            <button onClick={() => {
-                setFavorite(!favorite)
-            }} className="favorite-button">☆</button>
-            )}
+            <button onClick={toggleFavorite} className={favorite? "favorite-button active" : "favorite-button"}>{favorite? "★" : "☆"}</button>
             <h4 onClick={updateDisplayName}>{displayName ? pet.name : pet.animal_type}</h4>
             <button onClick={() => {
                 increaseLikes(pet)
