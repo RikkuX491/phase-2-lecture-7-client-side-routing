@@ -68,10 +68,6 @@ header h1 {
   text-shadow: 0 0 0 var(--green);
 }
 
-main {
-  padding: 0 1rem;
-}
-
 .new-pet-form {
   padding: 2rem 1rem;
   margin: 2rem 0;

@@ -1,13 +1,13 @@
 import Header from "./Header"
-import PetPage from "./PetPage"
+import NewPetForm from "./NewPetForm"
+import Search from "./Search"
+import PetList from "./PetList"
 import {useState, useEffect} from "react"
 
 function App() {
 
   const [searchText, setSearchText] = useState("")
-  const [formData, setFormData] = useState({
-    likes: 0
-  })
+  const [formData, setFormData] = useState({})
   const [pets, setPets] = useState([])
 
   useEffect(() => {
@@ -17,9 +17,6 @@ function App() {
   }, [])
 
   const filteredPets = pets.filter(pet => {
-    if(searchText === ""){
-      return true
-    }
     return pet.name.toUpperCase().includes(searchText.toUpperCase()) || pet.animal_type.toUpperCase().includes(searchText.toUpperCase())
   })
 
@@ -66,7 +63,7 @@ function App() {
     .then(updatedPet => {
       setPets(pets => pets.map(p => {
         if(p.id === updatedPet.id){
-          return {...p, likes: p.likes + 1}
+          return updatedPet
         }
         else{
           return p
@@ -78,7 +75,9 @@ function App() {
   return (
     <div className="app">
       <Header />
-      <PetPage pets={filteredPets} setSearchText={setSearchText} adoptPet={adoptPet} addPet={addPet} updateFormData={updateFormData} increaseLikes={increaseLikes} />
+      <NewPetForm addPet={addPet} updateFormData={updateFormData} />
+      <Search setSearchText={setSearchText} />
+      <PetList pets={filteredPets} adoptPet={adoptPet} increaseLikes={increaseLikes} />
     </div>
   );
 }
