@@ -1,4 +1,5 @@
 import Header from "./Header"
+import Home from "./Home"
 import NewPetForm from "./NewPetForm"
 import Search from "./Search"
 import PetList from "./PetList"
@@ -75,6 +76,7 @@ function App() {
   return (
     <div className="app">
       <Header />
+      <Home />
       <NewPetForm addPet={addPet} updateFormData={updateFormData} />
       <Search setSearchText={setSearchText} />
       <PetList pets={filteredPets} adoptPet={adoptPet} increaseLikes={increaseLikes} />
