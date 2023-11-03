@@ -40,7 +40,7 @@ function App() {
         "Content-Type": "application/json",
         "Accept": "application/json"
       },
-      body: JSON.stringify(formData)
+      body: JSON.stringify({...formData, likes: 0})
     })
     .then(response => response.json())
     .then(newPet => setPets([...pets, newPet]))
