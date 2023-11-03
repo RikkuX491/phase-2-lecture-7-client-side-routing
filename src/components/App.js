@@ -3,7 +3,11 @@ import Home from "./Home"
 import NewPetForm from "./NewPetForm"
 import Search from "./Search"
 import PetList from "./PetList"
+import ErrorPage from "./ErrorPage"
+import PetProfile from "./PetProfile"
+
 import {useState, useEffect} from "react"
+import {createBrowserRouter, RouterProvider} from "react-router-dom"
 
 function App() {
 
@@ -73,13 +77,46 @@ function App() {
     })
   }
 
+  const routes = [
+    {
+      path: "/",
+      element: <Home adoptPet={adoptPet} increaseLikes={increaseLikes} />,
+      errorElement: <ErrorPage/>,
+      children: [
+        {
+          path: "/",
+          element: <h1 className="home">Welcome to the Flatapets website!</h1>
+        },
+        {
+          path: "/pets",
+          element: <>
+            <Search setSearchText={setSearchText} />
+            <PetList pets={filteredPets} />
+          </>
+        },
+        {
+          path: "/add_pet",
+          element: <NewPetForm addPet={addPet} updateFormData={updateFormData} />
+        },
+        {
+          path: "/pets/:id",
+          element: <PetProfile pets={pets}/>
+        }
+      ]
+    }
+  ]
+
+  const router = createBrowserRouter(routes)
+
   return (
     <div className="app">
       <Header />
-      <Home />
+
+      {/* <Home />
       <NewPetForm addPet={addPet} updateFormData={updateFormData} />
       <Search setSearchText={setSearchText} />
-      <PetList pets={filteredPets} adoptPet={adoptPet} increaseLikes={increaseLikes} />
+      <PetList pets={filteredPets} adoptPet={adoptPet} increaseLikes={increaseLikes} /> */}
+      <RouterProvider router={router}/>
     </div>
   );
 }

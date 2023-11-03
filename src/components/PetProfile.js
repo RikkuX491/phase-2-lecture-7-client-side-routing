@@ -1,7 +1,13 @@
 import {useState} from "react"
-import { useOutletContext, Link } from "react-router-dom"
+import { useOutletContext, useParams } from "react-router-dom"
 
-function Pet({pet}){
+function PetProfile({pets}){
+
+    const {id} = useParams()
+
+    const pet = pets.find(p => {
+        return p.id === Number(id)
+    })
 
     const [favorite, setFavorite] = useState(false)
     const [displayName, setDisplayName] = useState(true)
@@ -15,9 +21,13 @@ function Pet({pet}){
     function toggleFavorite(){
         setFavorite(!favorite)
     }
+
+    if(!pet){
+        return <h1>Error: Pet Not Found!</h1>
+    }
     
     return (
-        <li className="pet">
+        <div className="pet">
             <img src={pet.image} alt={pet.name} />
             <button onClick={toggleFavorite} className={favorite? "favorite-button active" : "favorite-button"}>{favorite? "★" : "☆"}</button>
             <h4 onClick={updateDisplayName}>{displayName ? pet.name : pet.animal_type}</h4>
@@ -28,9 +38,8 @@ function Pet({pet}){
             <button onClick={() => {
                 adoptPet(pet.id)
             }} className="adopt-button">Adopt</button>
-            <Link to={`/pets/${pet.id}`}>See Pet Profile</Link>
-        </li>
+        </div>
     )
 }
 
-export default Pet;
+export default PetProfile
