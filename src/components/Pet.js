@@ -14,11 +14,11 @@ function Pet({pet, adoptPet, increaseLikes}){
             <img src={pet.image} alt={pet.name} />
             {favorite ? (
             <button onClick={() => {
-                setFavorite((favorite) => !favorite)
+                setFavorite(!favorite)
             }} className="favorite-button active">★</button>
             ) : (
             <button onClick={() => {
-                setFavorite((favorite) => !favorite)
+                setFavorite(!favorite)
             }} className="favorite-button">☆</button>
             )}
             <h4 onClick={updateDisplayName}>{displayName ? pet.name : pet.animal_type}</h4>
