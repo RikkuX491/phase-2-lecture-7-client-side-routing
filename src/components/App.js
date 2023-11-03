@@ -3,7 +3,9 @@ import Home from "./Home"
 import NewPetForm from "./NewPetForm"
 import Search from "./Search"
 import PetList from "./PetList"
+import PetProfile from "./PetProfile"
 import {useState, useEffect} from "react"
+import { createBrowserRouter, RouterProvider } from "react-router-dom"
 
 function App() {
 
@@ -73,13 +75,48 @@ function App() {
     })
   }
 
+  const routes = [
+    {
+      path: "/",
+      element: <Home adoptPet={adoptPet} increaseLikes={increaseLikes} />,
+      errorElement: <h1>Wrong Page Pal</h1>,
+      children: [
+        {
+          path: "/",
+          element: <h1 className="home">Welcome to the Flatapets website!</h1>
+        },
+        {
+          path: "/pets",
+          element: <PetList pets={pets} />
+        },
+        {
+          path: "/search",
+          element: <Search setSearchText={setSearchText} />,
+          children: [
+            {
+              path: "/search/pets",
+              element: <PetList pets={filteredPets} />
+            }
+          ]
+        },
+        {
+          path: "/add_pet",
+          element: <NewPetForm addPet={addPet} updateFormData={updateFormData} />
+        },
+        {
+          path: "/pets/:id",
+          element: <PetProfile pets={pets} />
+        }
+      ]
+    }
+  ]
+
+  const router = createBrowserRouter(routes)
+
   return (
     <div className="app">
       <Header />
-      <Home />
-      <NewPetForm addPet={addPet} updateFormData={updateFormData} />
-      <Search setSearchText={setSearchText} />
-      <PetList pets={filteredPets} adoptPet={adoptPet} increaseLikes={increaseLikes} />
+      <RouterProvider router={router}/>
     </div>
   );
 }

@@ -1,6 +1,10 @@
-function Home(){
+import NavBar from "./NavBar"
+import {Outlet} from "react-router-dom"
+
+function Home({adoptPet, increaseLikes}){
     return <>
-        <h1 className="home">Welcome to the Flatapets website!</h1>
+        <NavBar/>
+        <Outlet context={{adoptPet: adoptPet, increaseLikes: increaseLikes}}/>
     </>
 }
 
