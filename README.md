@@ -11,7 +11,7 @@ Today we'll continue to build our app for the pet adoption center, Flatapets, th
 ## Setup
 
 1. Run `npm install` in your terminal to install the dependencies for this React app.
-2. Run `npm install react-router-dom@5` to install react-router-dom so you can start using React Router version 5 (the curriculum covers React Router version 5, so make sure to include @5 at the end of the install command to install React Router version 5 instead of version 6).
+2. Run `npm install react-router-dom@6` to install react-router-dom so you can start using React Router version 6 (the curriculum covers React Router version 6, so make sure to include @6 at the end of the install command to install React Router version 6).
 3. Run `npm run server`. This will run your backend on port `4000`.
 4. In a new terminal, run `npm start` in your terminal to run this React app in the browser. If your browser does not automatically open the page for you, open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
